@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style2.css">
+    <title>SKiF</title>
+</head>
+<body class="body">
+    <header class="header">
+    <div class="name">SKiF</div>
+    <div class="entry">Войти</div>
+    </header>
+    <main class="main">
+        <div class="home_page_main">
+            <div class="home_page">
+                <div class="home_page_avatar"></div>
+                <div class="home_page_name">Георгий</div>
+                <form action="/" method="post">
+                    <button class="home_page_post">Новая запись</button>
+                </form>
+            </div>
+            <div class="home_page_post_new">
+                <div class="home_page_post_head">Название поста</div>
+                <div class="home_page_post_text"></div>
+            </div>
+            <div class="home_page_post_new"></div>
+            <div class="home_page_post_new"></div>
+        </div>
+        <div class="firstBlock">
+            <button type="button" class="firstBlock_head_entry">Войти</button>
+            <ul class="link_small_head">
+                <li class="link_small">Моя страница</li>
+                <li class="link_small">Дневник питания</li>
+                <li class="link_small">Дневник тренировок</li>
+                <li class="link_small">Изменения веса</li>
+                <li class="link_small">Статьи</li>
+            </ul>
+        </div>
+        <div class="secondBlock">
+            <div class="triangle-left"></div>  
+            <ul class="data_block">
+                <li class="data">15.04</li>
+                <li class="data">16.04</li>
+                <li class="data">17.04</li>
+                <li class="data">18.04</li>
+                <li class="data">19.04</li>
+                <li class="data">20.04</li>
+                <li class="data">21.04</li>
+            </ul>
+            <div class="nutrition">
+                <form action="/" method="post">
+                    <div class="block">
+                        <label class="food">Завтрак<input class="food_input" type="text"></label>
+                        <button class="plus"></button>
+                    </div>
+                    <div class="block">
+                        <label class="food">Обед<input class="food_input" type="text"></label>
+                        <button class="plus"></button>
+                    </div>
+                    <div class="block">
+                        <label class="food">Ужин<input class="food_input" type="text"></label>
+                        <button class="plus"></button>
+                    </div>
+                </form>
+                <div class="calculator">
+                    <h1 class="calculator_head">Калькулятор КБЖУ</h1>
+                    <form action="/" method="post" class="calculator_form">
+                            <label class="food">Белки<input class="calculator_input" type="text"></label>
+                            <label class="food">Жиры<input class="calculator_input" type="text"></label>
+                            <label class="food">Углеводы<input class="calculator_input" type="text"></label>
+                            <label class="food">Всего каллорий<input class="calculator_input_callor" type="text"></label>
+                            <button class="calculator_button">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+            <div class="workout">
+                <ul class="workout_item_head">
+                    <li class="workout_item">Добавить<br>упражнение</li>
+                    <li class="workout_item">Убрать<br>упражнение</li>
+                    <li class="workout_item">Создать<br>тренировку</li>
+                    <li class="workout_item">Добавить<br>тренировку</li>
+                    <li class="workout_item">Добавить<br>программу</li>
+                </ul>
+                <div class="workout_main">
+                    <div class="workout_main_first">
+                        <img src="icons/work1.gif" alt="гифка">
+                        <div class="working_text"><b>Становая тяга со штангой</b></div>
+                        <div class="working_text">3 подхода 8-12 повторений</div>
+                    </div>
+                    <div class="workout_main_first">
+                        <img src="icons/work1.gif" alt="гифка">
+                        <div class="working_text"><b>Становая тяга со штангой</b></div>
+                        <div class="working_text">3 подхода 8-12 повторений</div>
+                    </div>
+                    <div class="workout_main_first">
+                        <img src="icons/work1.gif" alt="гифка">
+                        <div class="working_text"><b>Становая тяга со штангой</b></div>
+                        <div class="working_text">3 подхода 8-12 повторений</div>
+                    </div>
+                </div>
+            </div>
+            <div class="track">
+                <form action="/" method="post">
+                    <label class="track_main_head">Текущий вес<input class="track_input_head" type="text"></label>
+                    <label class="track_main_old">Начальный вес<input class="track_input" type="text"></label>
+                    <label class="track_main_welcome">Желанный вес<input class="track_input" type="text"></label>
+                    <button class="track_button">Сохранить</button>
+                </form>
+                <div class="track_graph_head">График изменения веса</div>
+                <div class="track_graph"></div>
+            </div>
+        </div>
+    </main>
+    <div class="registration">
+        <h1 class="regist_title">Регистрация</h1>
+        <form action="/" method="post">
+            <input  class="input_regist" type="text" placeholder="Придумайте логин" name="login">
+            <input class="input_regist" type="text" placeholder="Придумайте пароль" name="password">
+            <input class="input_regist" type="text" placeholder="Повторите пароль" name="password">
+            <input class="input_regist" type="text" placeholder="Email" name="email">
+            <button class="btn_regist">Создать аккаунт</button>
+        </form>
+        <h1 class="auth_title">Авторизация</h1>
+        <form action="/" method="post">
+            <input  class="input" type="text" placeholder="Введите логин" name="login">
+            <input class="input" type="text" placeholder="Введите пароль" name="password">
+            <button class="btn">Войти</button>
+            <button class="btn">Регистрация</button>
+        </form>
+    </div>
+    <div class="help_block">
+        <div class="help_block_head">
+            <button type="button" class="help_block_vector"></button>
+        </div>
+        <div class="workout_help_block">
+            <div class="workout_help_head">Упражнения</div>
+            <div class="workout_help_head">Программы</div>
+            <div class="workout_help_head">Личное</div>
+            <div class="exercises">
+                <form action="/" method="post">
+                    <input class="exercises_input" type="search" placeholder="название упражнения" >
+                </form>
+                <ul class="exercises_block">
+                    <li class="exercises_element">Становая тяга со штангой</li>
+                    <li class="exercises_element">Становая тяга со штангой</li>
+                    <li class="exercises_element">Становая тяга со штангой</li>
+                </ul>
+            </div>
+            <div class="programm">
+                <ul class="exercises_block">
+                    <li class="exercises_element">Упржанения для ног(первый вариант)</li>
+                    <li class="exercises_element">Упржанения для ног(второй вариант)</li>
+                    <li class="exercises_element">Упржанения для ног(третий вариант)</li>
+                    <li class="exercises_element">Упражнения плечи + грудь</li>
+                    <li class="exercises_element">Упржанения на спину(первый вариант)</li>
+                    <li class="exercises_element">Упржанения на спину(второй вариант)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="nutrition_help_block">
+            <div class="nutrition_help_head">Все продукты</div>
+            <div class="nutrition_help_head">Личное</div>
+            <div class="nutrition_all">
+                <form action="/" method="post">
+                    <input class="nutrition_main_input" type="search" placeholder="Название продуктов" >
+                </form>
+                <ul class="nutrition_block">
+                    <li class="nutrition_element">
+                        <div>Гречка</div>
+                        <div>Белки - 12г Жиры - 8 гр Углеводы  - 40 гр</div>
+                        <div>
+                            <form action="/" method="post">
+                                <label  class="nutrition_label" for="nutrition_input_main">Вес(гр.)</label>
+                                <input class="nutrition_input" type="text" id="nutrition_input_main">
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="nutrition_personal">
+                <form action="/" method="post">
+                    <button type="button" class="nutrition_personal_add">Добавить продукт</button>
+                </form>
+                <div class="nutrition_personal_add_example">
+                    <form action="/" method="post">
+                        <label class="nutrition_personal_add_example_name">Название<input class="nutrition_personal_add_example_input" type="text"></label>
+                        <label class="nutrition_personal_add_example_name">Белки<input class="nutrition_personal_add_example_input" type="text"></label>
+                        <label class="nutrition_personal_add_example_name">Жиры<input class="nutrition_personal_add_example_input" type="text"></label>
+                        <label class="nutrition_personal_add_example_name">Углеводы<input class="nutrition_personal_add_example_input" type="text"></label>
+                        <label class="nutrition_personal_add_example_name">Каллорий<input class="nutrition_personal_add_example_input" type="text" ></label>
+                        <button type="button" class="nutrition_personal_add_example_button">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
