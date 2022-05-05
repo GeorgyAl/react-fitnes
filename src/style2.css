@@ -31,6 +31,7 @@
     padding: 12px 14px 12px 14px;
     text-align: center;
     position: absolute;
+    background-color: inherit;
     right: 300px;
     top: 15px;
     color: white;
@@ -203,6 +204,7 @@
     background-color: white;
     border: 2px solid rgb(147, 143, 143);
     border-radius: 20px;
+    overflow-y: scroll
 }
 
 .authorization .help_block {
@@ -279,10 +281,24 @@
     border-bottom: 21px solid transparent;
     border-right: 30px solid rgb(37, 36, 36);
     display: inline-block;
-    margin: 20px;
+    margin: 19px;
 }
 
 .triangle-left:hover {
+    cursor: pointer;
+}
+
+.triangle-right {
+    width: 0;
+    height: 0;
+    border-top: 21px solid transparent;
+    border-bottom: 21px solid transparent;
+    border-left: 30px solid rgb(37, 36, 36);
+    display: inline-block;
+    margin: 19px;
+}
+
+.triangle-right:hover {
     cursor: pointer;
 }
 
@@ -565,7 +581,7 @@ label {
 
 .workout_help_block {
     width: 350px;
-    padding: 15px 1px 15px 17px;
+    padding: 15px 1px 15px 9px;
     display: none;
 }
 

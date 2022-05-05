@@ -1,0 +1,15 @@
+.exercises_input {
+    width: 339px;
+    height: 35px;
+    margin-top: 10px;
+    padding-left: 5px;
+    display: block;
+    font-size: 18px;
+    font-family: inherit;
+    border-radius: 10px;
+}
+
+.exercises_block {
+    margin: 0;
+    padding: 0;
+}

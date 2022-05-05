@@ -1,0 +1,26 @@
+.nutrition_element {
+    text-align: center;
+    padding: 12px;
+    font-size: 18px;
+    list-style-type: none;
+    margin-top: 10px;
+}
+
+.nutrition_element:hover {
+    cursor: pointer;
+    background-color: rgb(238, 239, 241);
+}
+
+.nutrition_label {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.nutrition_input {
+    width: 60px;
+    height: 30px;
+    font-size: 18px;
+    font-family: inherit;
+    border-radius: 10px;
+    display: inline-block;
+}

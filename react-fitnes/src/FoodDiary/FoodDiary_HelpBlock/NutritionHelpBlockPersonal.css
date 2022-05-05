@@ -1,0 +1,61 @@
+.nutrition_main_input {
+    width: 335px;
+    height: 35px;
+    margin-top: 10px;
+    padding-left: 5px;
+    display: block;
+    font-size: 18px;
+    font-family: inherit;
+    border-radius: 10px;
+}
+
+.nutrition_block {
+    margin: 0;
+    padding: 0;
+}
+
+.nutrition_element {
+    text-align: center;
+    padding: 12px;
+    font-size: 18px;
+    list-style-type: none;
+    margin-top: 10px;
+}
+
+.nutrition_element:hover {
+    cursor: pointer;
+    background-color: rgb(238, 239, 241);
+}
+
+.nutrition_label {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.nutrition_input {
+    width: 60px;
+    height: 30px;
+    font-size: 18px;
+    font-family: inherit;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.nutrition_personal_add {
+    margin: 15px 70px 0px;
+    display: inline-block;
+    margin-right: 5px;
+    list-style-type: none;
+    padding: 8px 16px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgb(37, 36, 36);
+    border-radius: 25px;
+    font-family: Georgia, serif;
+    font-size: 20px;
+}
+
+.nutrition_personal_add:hover {
+    cursor: pointer;
+    background-color: black;
+}

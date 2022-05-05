@@ -1,0 +1,50 @@
+.workout_item_head {
+    margin-top: 60px;
+    display: inline-block;
+    padding: 0;
+    margin-left: 60px;
+}
+
+.workout_item {
+    background-color: rgb(37, 36, 36);
+    color: rgb(243, 235, 235);
+    display: inline-block;
+    margin-right: 5px;
+    list-style-type: none;
+    padding: 5px 12px;
+    text-align: center;
+    border: 2px solid rgb(37, 36, 36);
+    border-radius: 25px;
+    font-family: Georgia, serif;
+    font-size: 18px;
+}
+
+.workout_item:hover {
+    cursor: pointer;
+}
+
+.workout_main {
+    text-align: center;
+}
+
+.workout_main_first {
+    display: inline-block;
+    width: 200px;
+    height: 270px;
+    border: 2px solid rgb(147, 143, 143);
+    border-radius: 10px;
+    margin: 15px 20px;
+}
+
+.working_text {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.workout_main_first img {
+    width: 200px;
+    height: auto;
+    border-radius: 20px;
+}

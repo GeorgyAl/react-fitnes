@@ -1,0 +1,41 @@
+.nutrition_personal_add_example {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.nutrition_personal_add_example_name {
+    font-size: 18px;
+    font-family: inherit;
+    margin: 5px;
+    display: inline-block;
+}
+
+.nutrition_personal_add_example_input {
+    text-align: center;
+    width: 180px;
+    height: 35px;
+    margin-top: 10px;
+    padding-left: 5px;
+    display: block;
+    font-size: 18px;
+    font-family: inherit;
+    border-radius: 10px;
+}
+
+.nutrition_personal_add_example_button {
+    display: block;
+    width: 180px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgb(37, 36, 36);
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.nutrition_personal_add_example_button:hover {
+    cursor: pointer;
+    background-color: black;
+}

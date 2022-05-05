@@ -1,0 +1,43 @@
+.block {
+    margin-left: 50px;
+}
+
+input,
+label {
+    display: block;
+}
+
+.food {
+    font-size: 25px;
+    font-family: inherit;
+    margin: 20px;
+    display: inline-block;
+}
+
+.food_input {
+    width: 550px;
+    height: 35px;
+    margin-top: 10px;
+    padding-left: 5px;
+    display: block;
+    font-size: 18px;
+    font-family: inherit;
+    border-radius: 10px;
+}
+
+.plus {
+    border: none;
+    width:70px;
+    height:70px;
+    background:
+      linear-gradient(#000,#000),
+      linear-gradient(#000,#000);
+    background-position:center;
+    background-size: 50% 2px,2px 50%; /*thickness = 2px, length = 50% (25px)*/
+    background-repeat:no-repeat;
+    padding: 30px 20px;
+}
+
+.plus:hover {
+    cursor: pointer;
+}

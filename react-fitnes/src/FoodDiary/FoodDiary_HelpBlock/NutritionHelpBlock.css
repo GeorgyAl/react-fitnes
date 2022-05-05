@@ -1,0 +1,23 @@
+.nutrition_help_block {
+    width: 350px;
+    padding: 15px 1px 15px 17px;
+    padding-bottom: 59px;
+}
+
+.nutrition_help_head {
+    display: inline-block;
+    width: 114px;
+    height: 34px;
+    font-size: 16px;
+    text-align: center;
+    font-family: inherit;
+    border: 2px solid black;
+    padding: 5px;
+    margin-right: 5px;
+    background-color: inherit;
+}
+
+.nutrition_help_head:hover {
+    cursor: pointer;
+    background-color: rgb(238, 239, 241);
+}

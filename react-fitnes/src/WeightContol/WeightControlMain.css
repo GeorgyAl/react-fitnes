@@ -1,0 +1,81 @@
+
+.secondblock {
+    width: 800px;
+    position: relative;
+    left: 240px;
+    height: 600px;
+    display: inline-block;
+    background-color: white;
+    border: 2px solid rgb(147, 143, 143);
+    border-radius: 20px;
+}
+
+.track_main {
+    font-size: 25px;
+    font-family: inherit;
+    margin: 20px;
+    display: inline-block;
+}
+
+.track_input {
+    text-align: center;
+    width: 50px;
+    height: 35px;
+    margin: auto;
+    margin-top: 10px;
+    padding-left: 5px;
+    display: block;
+    font-size: 30px;
+    font-family: inherit;
+    border-radius: 10px;
+}
+
+.track_button {
+    display: block;
+    width: 180px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgb(37, 36, 36);
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.track_button:hover {
+    cursor: pointer;
+    background-color: black;
+}
+
+.track_main_head {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 29px;
+    font-weight: bold;
+}
+
+.track_input_head {
+    width: 100px;
+    height: 50px;
+    margin: auto;
+    text-align: center;
+    margin-top: 10px;
+    padding-left: 5px;
+    display: block;
+    font-size: 50px;
+    font-family: inherit;
+    border-radius: 10px;
+}
+
+.track_main_old {
+    display: inline-block;
+    margin-left: 50px;
+    font-size: 19px;
+}
+
+.track_main_welcome {
+    display: inline-block;
+    margin-left: 462px;
+    font-size: 19px;
+}

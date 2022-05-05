@@ -1,0 +1,13 @@
+.track_graph_head {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 25px;
+}
+
+.track_graph {
+    margin: auto;
+    margin-top: 15px;
+    width: 450px;
+    height: 235px;
+    border: 2px solid black;
+}
