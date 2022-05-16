@@ -3,32 +3,8 @@ import './NutritionHelpBlockPersonal.css'
 import NutritionHelpBlockPersonalAdd from './NutritionHelpBlockPersonalAdd';
 import NutritionHelpBlockAllItem from './NutritionHelpBlockAllItem';
 
-const foods = [
-    {
-        name: 'Гречка',
-        squirrels: '10',
-        fats: '5',
-        carbohydrates: '30',
-        callory: '450'
-    },
-    {
-        name: 'Яйцо куринное',
-        squirrels: '15',
-        fats: '15',
-        carbohydrates: '4',
-        callory: '130'
-    },
-    {
-        name: 'Грудка',
-        squirrels: '25',
-        fats: '5',
-        carbohydrates: '10',
-        callory: '350'
-    },
-]
 
-export default function NutritionHelpBlockPersonal() {
-
+export default function NutritionHelpBlockPersonal({foods, onUpdateFoods, setStore, store}) {
     const [show, setShow] = useState(false)
 
     function handleClick () {
@@ -49,9 +25,9 @@ export default function NutritionHelpBlockPersonal() {
                            onChange={(event) => setValue(event.target.value)}/>
                 </form>
                 <form action="/" method="post">
-                    <button onClick={handleClick} type="button" className="nutrition_personal_add">Добавить продукт</button>
+                    <button onClick={handleClick} type="button" className={show ? "nutrition_personal_exit" : "nutrition_personal_add"}>{show ? 'Закрыть' : 'Добавить продукт'}</button>
                 </form>
-                {show && <NutritionHelpBlockPersonalAdd/>}
+                {show && <NutritionHelpBlockPersonalAdd onClick={onUpdateFoods}/>}
 
                 <ul className="nutrition_block">
                     {filteredFood.map((food, index) => {
@@ -59,7 +35,10 @@ export default function NutritionHelpBlockPersonal() {
                                                         name={food.name}
                                                         squirrels={food.squirrels}
                                                         fats={food.fats}
-                                                        carbohydrates={food.carbohydrates}/>
+                                                        carbohydrates={food.carbohydrates}
+                                                        callory={food.callory}
+                                                        setStore={setStore}
+                                                        store={store}/>
                     })}
                 </ul>
             </div>

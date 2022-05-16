@@ -17,7 +17,7 @@
 
 .home_page_name {
     font-size: 20px;
-    margin-left: 40px;
+    margin-left: 20px;
 }
 
 .home_page_post {
@@ -33,29 +33,7 @@
     right: 50px;
 }
 
-.home_page_post_new {
-    width: 800px;
-    height: 390px;
-    margin-top: 20px;
-    margin-left: 240px;
-    background-color: white;
-    border: 2px solid rgb(147, 143, 143);
-    border-radius: 20px;
-}
-
-.home_page_post_head {
-    border-top-left-radius: 20px;
-    border-bottom: 2px solid rgb(147, 143, 143);
-    height: 40px;
-    font-size: 26px;
-    margin: 8px;
-    font-family: inherit;
-}
-
-.home_page_post_text {
-    width: 600px;
-    height: 250px;
-    border: 2px solid black;
-    margin: auto;
-    margin-top: 40px;
+.home_page_post:hover {
+    background-color: black;
+    cursor: pointer;
 }

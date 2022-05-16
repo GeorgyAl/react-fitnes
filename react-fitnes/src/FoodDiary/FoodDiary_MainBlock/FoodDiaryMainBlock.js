@@ -3,9 +3,13 @@ import './FoodDiaryMainBlock.css'
 import FoodDiaryMainBlockData from './FoodDiaryMainBlockData.js'
 import FoodDiaryNutrition from './FoodDiaryMainBlockNutrition/FoodDiaryNutrition';
 
-export default function FoodDiaryMainBlock() {
+export default function FoodDiaryMainBlock({ helpActiveClickLunch, helpActiveClickDinner, helpActiveClickBreakfast, setStore, store }) {
     return  <div className='secondBlock'>
         <FoodDiaryMainBlockData/>
-        <FoodDiaryNutrition/>
+        <FoodDiaryNutrition helpActiveClickLunch={helpActiveClickLunch} 
+            helpActiveClickDinner={helpActiveClickDinner} 
+            helpActiveClickBreakfast={helpActiveClickBreakfast}
+            setStore={setStore}
+            store={store}/>
     </div>
 }

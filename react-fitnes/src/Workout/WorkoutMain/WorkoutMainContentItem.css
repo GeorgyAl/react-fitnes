@@ -1,0 +1,38 @@
+.workout_main_first {
+    display: inline-block;
+    width: 200px;
+    height: 270px;
+    border: 2px solid rgb(147, 143, 143);
+    border-radius: 10px;
+    margin: 15px 20px;
+    position: relative;
+}
+
+.working_text {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.workout_main_first img {
+    width: 200px;
+    height: auto;
+    border-radius: 20px;
+}
+
+.workout_exit {
+    width: 32px;
+    height: 32px;
+    background-image: url(./gifs/vector.png);
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgb(190, 187, 187);
+    border-radius: 5px;
+}
+
+.workout_exit:hover {
+    background-image: url(./gifs/vector2.png);
+    cursor: pointer;
+}

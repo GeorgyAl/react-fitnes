@@ -35,7 +35,7 @@
 
 .data {
     display: inline-block;
-    margin-right: 9px;
+    margin-right: 6px;
     list-style-type: none;
     padding: 8px 16px;
     text-align: center;
@@ -47,5 +47,25 @@
 }
 
 .data:hover {
+    background-color: rgb(37, 36, 36);
+    color: white;
+    cursor: pointer;
+}
+
+.data_active {
+    display: inline-block;
+    margin-right: 6px;
+    list-style-type: none;
+    padding: 8px 16px;
+    text-align: center;
+    border: 2px solid rgb(37, 36, 36);
+    border-radius: 25px;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    background-color: rgb(37, 36, 36);
+    color: white;
+}
+
+.data_active:hover {
     cursor: pointer;
 }

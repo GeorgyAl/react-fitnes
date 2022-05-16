@@ -1,31 +1,35 @@
 import React from 'react';
 import './WorkoutMainContent.css'
+import WorkoutMainContentItem from './WorkoutMainContentItem';
 
-export default function WorkoutMainContent() {
+export default function WorkoutMainContent({ helpActiveClick, store, setStore }) {
+    const removeItem = pos => {
+        const temp = [...store.WorkInDay];
+        console.log(temp)
+        temp.splice(pos, 1);
+        console.log(store.WorkInDay, "Нажатие на кнопку удаления")
+        setStore((prevStore) => {
+            return {
+                ...prevStore,
+                WorkInDay: temp,
+            }            
+        })
+    }
     return <div className="workout">
                 <ul className="workout_item_head">
-                    <li className="workout_item">Добавить<br/>упражнение</li>
-                    <li className="workout_item">Убрать<br/>упражнение</li>
+                    <li className="workout_item" onClick={helpActiveClick}>Добавить<br/>упражнение</li>
                     <li className="workout_item">Создать<br/>тренировку</li>
                     <li className="workout_item">Добавить<br/>тренировку</li>
                     <li className="workout_item">Добавить<br/>программу</li>
                 </ul>
                 <div className="workout_main">
-                    <div className="workout_main_first">
-                        <img src='./gifs/work1.gif' alt="гифка"/>
-                        <div className="working_text"><b>Становая тяга со штангой</b></div>
-                        <div className="working_text">3 подхода 8-12 повторений</div>
-                    </div>
-                    <div className="workout_main_first">
-                        <img src='./gifs/work1.gif' alt="гифка"/>
-                        <div className="working_text"><b>Становая тяга со штангой</b></div>
-                        <div className="working_text">3 подхода 8-12 повторений</div>
-                    </div>
-                    <div className="workout_main_first">
-                        <img src='./gifs/work1.gif' alt="гифка"/>
-                        <div className="working_text"><b>Становая тяга со штангой</b></div>
-                        <div className="working_text">3 подхода 8-12 повторений</div>
-                    </div>
+                    {store.WorkInDay.map((exercise, index) => {
+                        return <WorkoutMainContentItem key={index}
+                                    name={exercise.name}
+                                    gif={exercise.gif}
+                                    removeItem={removeItem}/>
+                    })}
                 </div>
+                <button className="calculator_button">Сохранить</button>
             </div>
 }

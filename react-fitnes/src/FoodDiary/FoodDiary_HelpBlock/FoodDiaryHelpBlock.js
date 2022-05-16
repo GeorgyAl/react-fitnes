@@ -1,21 +1,15 @@
-import React, { useState} from 'react';
+import React from 'react';
 import './FoodDiaryHelpBlock.css'
 import NutritionHelpBlock from './NutritionHelpBlock.js'
 
-export default function FoodDiaryHelpBlock() {
-
-    const [show, setShow] = useState(false)
-
-    function handleClick () {
-        setShow(!show)
-    }
+export default function FoodDiaryHelpBlock({ helpInactiveClick, setStore, store }) {
 
     return  <div className="help_block">
                 <div className="help_block_head">
                     <form action="/" method="post">
-                        <button onClick={handleClick} type="button" className="help_block_vector"></button>
+                        <button onClick={helpInactiveClick} type="button" className="help_block_vector"></button>
                     </form>
                 </div>
-                <NutritionHelpBlock/>
+                <NutritionHelpBlock setStore={setStore} store={store}/>
             </div>
 }

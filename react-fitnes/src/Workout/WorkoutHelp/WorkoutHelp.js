@@ -2,13 +2,13 @@ import React from 'react';
 import './WorkoutHelp.css'
 import WorkoutHelpContent from './WorkoutHelpContent/WorkoutHelpContent';
 
-export default function WorkoutHelp() {
+export default function WorkoutHelp({ helpInactiveClick, setStore }) {
     return  <div className="help_block">
                 <div className="help_block_head">
                     <form action="/" method="post">
-                        <button type="button" className="help_block_vector"></button>
+                        <button onClick={helpInactiveClick} type="button" className="help_block_vector"></button>
                     </form>
                 </div>
-                <WorkoutHelpContent/>
+                <WorkoutHelpContent setStore={setStore}/>
             </div>
 }

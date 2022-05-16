@@ -1,10 +1,10 @@
 .secondBlock {
     width: 800px;
-    position: relative;
-    left: 240px;
-    height: 100vh;
+    margin-left: 240px;
+    min-height: 100vh;
     display: inline-block;
     background-color: white;
     border: 2px solid rgb(147, 143, 143);
     border-radius: 20px;
+    padding-bottom: 15px;
 }

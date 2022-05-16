@@ -3,26 +3,38 @@ import './NutritionHelpBlock.css'
 import NutritionHelpBlockAll from './NutritionHelpBlockAll';
 import NutritionHelpBlockPersonal from './NutritionHelpBlockPersonal';
 
-export default function NutritionHelpBlock() {
-    const [showAll, setShowAll] = useState(false)
-    const [showPersonal, setShowPersonal] = useState(false)
-
-    function handleClickAll () {
-        setShowAll(!showAll)
-        setShowPersonal(showPersonal)
+export default function NutritionHelpBlock({ setStore, store }) {
+    const [foods, setFoods] = useState([
+        {
+            name: 'Творог',
+            squirrels: '10',
+            fats: '5',
+            carbohydrates: '30',
+            callory: '450'
+        },
+    ])
+    function onUpdateFoods (food) {
+        setFoods(prevFoods => prevFoods.concat(food))
     }
+    const [allActive, setAllactive] = useState(true);
+    const [personActive, setPersonActive] = useState(false);
 
-    function handleClickPerson () {
-        setShowPersonal(!showPersonal)
-        setShowAll(showAll)
+    function personlActiveClick () {
+        setAllactive(false);
+        setPersonActive(true);
+    }
+    
+    function allActiveClick () {
+        setAllactive(true);
+        setPersonActive(false);
     }
 
     return  <div className="nutrition_help_block">
                 <form action='/' method='post'>
-                    <button onClick={handleClickAll} type='button' className="nutrition_help_head">Все продукты</button>
-                    <button onClick={handleClickPerson} type='button' className="nutrition_help_head">Личное</button>  
+                    <button onClick={allActiveClick} type='button' className="nutrition_help_head">Все продукты</button>
+                    <button onClick={personlActiveClick} type='button' className="nutrition_help_head">Личное</button>  
                 </form>
-                {showAll && <NutritionHelpBlockAll/>}
-                {showPersonal && <NutritionHelpBlockPersonal/>}
+                {allActive && <NutritionHelpBlockAll setStore={setStore} store={store}/>}
+                {personActive && <NutritionHelpBlockPersonal setStore={setStore} store={store} onUpdateFoods={onUpdateFoods} foods={foods} />}
             </div>
 }

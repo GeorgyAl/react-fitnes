@@ -2,26 +2,25 @@ import React, { useState } from 'react';
 import './WorkoutHelpContent.css'
 import WorkoutHelpContentExer from './WorkoutHelpContentExer';
 import WorkoutHelpContentPrograms from './WorkoutHelpContentPrograms';
-export default function WorkoutHelpContent() {
+export default function WorkoutHelpContent({setStore, store}) {
+    const [showExercises, setShowExercises] = useState(true);
+    const [showPrograms, setShowPrograms] = useState(false);
 
-    const [showExercises, setShowExercises] = useState(false)
-
-    const [showPrograms, setShowPrograms] = useState(false)
-    function handleClickExercises () {
-        setShowExercises(!showExercises)
+    function showProgramsClick () {
+        setShowExercises(false);
+        setShowPrograms(true);
     }
-
     
-
-    function handleClickPrograms () {
-        setShowPrograms(!showPrograms)
+    function showExercisesClick () {
+        setShowPrograms(false);
+        setShowExercises(true);
     }
 
     return  <div className="workout_help_block">
-                    <div className="workout_help_head" onClick={handleClickExercises}>Упражнения</div>
-                    <div className="workout_help_head" onClick={handleClickPrograms}>Программы</div>
+                    <div className="workout_help_head" onClick={showExercisesClick}>Упражнения</div>
+                    <div className="workout_help_head" onClick={showProgramsClick}>Программы</div>
                     <div className="workout_help_head">Личное</div>
-                    {showExercises && <WorkoutHelpContentExer/>}
+                    {showExercises && <WorkoutHelpContentExer setStore={setStore} store={store}/>}
                     {showPrograms && <WorkoutHelpContentPrograms/>}
             </div>
 }

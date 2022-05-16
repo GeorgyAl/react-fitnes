@@ -51,10 +51,18 @@ const foods = [
         fats: '9',
         carbohydrates: '50',
         callory: '560'
+    },
+    {
+        name: 'Печенье',
+        squirrels: '5',
+        fats: '9',
+        carbohydrates: '50',
+        callory: '560'
     }
+    
 ]
 
-export default function NutritionHelpBlockAll() {
+export default function NutritionHelpBlockAll({ setStore, store }) {
 
     const [value, setValue] = useState('')
 
@@ -65,17 +73,20 @@ export default function NutritionHelpBlockAll() {
     return <div className="nutrition_all">
                 <form action="/" method="post">
                     <input className="nutrition_main_input" 
-                           type="text" 
-                           placeholder="Название продуктов"
-                           onChange={(event) => setValue(event.target.value)}/>
+                        type="text" 
+                        placeholder="Название продуктов"
+                        onChange={(event) => setValue(event.target.value)}/>
                 </form>
                 <ul className="nutrition_block">
                     {filteredFood.map((food, index) => {
                         return <NutritionHelpBlockAllItem key={index} 
-                                                        name={food.name}
-                                                        squirrels={food.squirrels}
-                                                        fats={food.fats}
-                                                        carbohydrates={food.carbohydrates}/>
+                                    name={food.name}
+                                    squirrels={food.squirrels}
+                                    fats={food.fats}
+                                    carbohydrates={food.carbohydrates}
+                                    callory={food.callory}
+                                    setStore={setStore}
+                                    store={store}/>
                     })}
                 </ul>
             </div>
