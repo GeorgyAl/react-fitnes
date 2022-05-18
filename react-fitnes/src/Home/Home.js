@@ -5,6 +5,8 @@ import initialState from '../Store/store';
 import BlockNewPost from './BlockNewPost';
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebaseConfig';
+import { db } from '../firebaseConfig';
+import { getDocs, collection} from 'firebase/firestore'
 
 export default function Home() {
     const [store, setStore] = useState(initialState)
@@ -12,6 +14,19 @@ export default function Home() {
     const [postTitle, setPostTitle] = useState('');
     const [postDescription, setPostDescription] = useState('');
     const [user, setUser] = useState({})
+
+
+    const postsCollectionRef = collection(db, 'posts');
+    const [postSee, setPostSee] = useState([])
+    useEffect(() => {
+        const getPosts = async () => {
+            const data = await getDocs (postsCollectionRef);
+            setPostSee(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+            console.log(postSee);
+        };
+        getPosts();
+    }, [])
+
 
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
@@ -63,9 +78,9 @@ export default function Home() {
                 {user ? <div className="home_page_name">{user.displayName}</div> : <div className="home_page_name"></div>}
                 <button onClick={handleAddPostActive} className="home_page_post">Новая запись</button>
             </div>
-            {store.allPosts.map((post, index) => {
-                        return <BlockNewPost postTitle={post.title} key={index} postDescription={post.description}/>
-                })}
+            {user ? postSee.map((post, index) => {
+                        return <BlockNewPost postTitle={post.title} key={index} postDescription={post.postText}/>
+                }) : null}
             {showAddpost && <AddNewPost 
                                 store={store} 
                                 handleAddPostInactive={handleAddPostInactive}
