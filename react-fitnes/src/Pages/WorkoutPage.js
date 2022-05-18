@@ -6,6 +6,7 @@ import initialState from '../Store/store';
 export default function WorkoutPage() {
 
   const [helpActive, setHelpActive] = useState(false);
+  const [selectData, setSelectData] = useState('');
 
   function helpActiveClick () {
     setHelpActive(true)
@@ -18,8 +19,8 @@ export default function WorkoutPage() {
 
   return <main>
               <CommonBlock/>
-              <WorkoutMain helpActiveClick={helpActiveClick} store={store} setStore={setStore} />
-              {helpActive && <WorkoutHelp helpInactiveClick={helpInactiveClick} setStore={setStore}/>}
+              <WorkoutMain helpActiveClick={helpActiveClick} store={store} setStore={setStore} selectData={selectData} setSelectData={setSelectData}/>
+              {helpActive && <WorkoutHelp helpInactiveClick={helpInactiveClick} setStore={setStore} store={store} selectData={selectData} setSelectData={setSelectData}/>}
           </main>
 
 }

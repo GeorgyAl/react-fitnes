@@ -5,8 +5,6 @@ import initialState from '../Store/store';
 import BlockNewPost from './BlockNewPost';
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebaseConfig';
-import { getDocs, collection } from 'firebase/firestore';
-import { db } from '../firebaseConfig';
 
 export default function Home() {
     const [store, setStore] = useState(initialState)
@@ -14,12 +12,12 @@ export default function Home() {
     const [postTitle, setPostTitle] = useState('');
     const [postDescription, setPostDescription] = useState('');
     const [user, setUser] = useState({})
-    const [postList, setPostList] = useState([]);
-    const postsCollectionRef = collection(db, 'posts');
 
-    onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-    });
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+    }, [user, setUser])
 
     function handleAddPostActive () {
         setShowAddPost(true);
@@ -59,11 +57,10 @@ export default function Home() {
     }
 
 
-
   return  <div className="home_page_main">
             <div className="home_page">
                 <div className="home_page_avatar"></div>
-                {user ? <div className="home_page_name">{user.email}</div> : <div className="home_page_name"></div>}
+                {user ? <div className="home_page_name">{user.displayName}</div> : <div className="home_page_name"></div>}
                 <button onClick={handleAddPostActive} className="home_page_post">Новая запись</button>
             </div>
             {store.allPosts.map((post, index) => {

@@ -1,70 +1,22 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './NutritionHelpBlockAll.css'
 import NutritionHelpBlockAllItem from './NutritionHelpBlockAllItem';
+import { collection, getDocs} from 'firebase/firestore'
+import { db } from '../../firebaseConfig';
 
-const foods = [
-    {
-        name: 'Гречка',
-        squirrels: '10',
-        fats: '5',
-        carbohydrates: '30',
-        callory: '450'
-    },
-    {
-        name: 'Яйцо куринное',
-        squirrels: '15',
-        fats: '15',
-        carbohydrates: '4',
-        callory: '130'
-    },
-    {
-        name: 'Грудка',
-        squirrels: '25',
-        fats: '5',
-        carbohydrates: '10',
-        callory: '350'
-    },
-    {
-        name: 'Капуста',
-        squirrels: '5',
-        fats: '2',
-        carbohydrates: '12',
-        callory: '100'
-    },
-    {
-        name: 'Свинина',
-        squirrels: '15',
-        fats: '15',
-        carbohydrates: '4',
-        callory: '380'
-    },
-    {
-        name: 'Морковь',
-        squirrels: '7',
-        fats: '5',
-        carbohydrates: '18',
-        callory: '88'
-    },
-    {
-        name: 'Печенье',
-        squirrels: '5',
-        fats: '9',
-        carbohydrates: '50',
-        callory: '560'
-    },
-    {
-        name: 'Печенье',
-        squirrels: '5',
-        fats: '9',
-        carbohydrates: '50',
-        callory: '560'
-    }
-    
-]
+export default function NutritionHelpBlockAll({ setStore, store, selectData, setSelectData }) {
 
-export default function NutritionHelpBlockAll({ setStore, store }) {
+    const [value, setValue] = useState('');
+    const [foods, setFoods] = useState([]);
+    const foodsCollectionRef = collection(db, "foods");
 
-    const [value, setValue] = useState('')
+    useEffect(() => {
+        const getFood = async () => {
+            const data = await getDocs(foodsCollectionRef);
+            setFoods(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+        }
+        getFood();
+    }, [])
 
     const filteredFood  = foods.filter(food => {
         return food.name.toLowerCase().includes(value.toLowerCase())
@@ -86,7 +38,9 @@ export default function NutritionHelpBlockAll({ setStore, store }) {
                                     carbohydrates={food.carbohydrates}
                                     callory={food.callory}
                                     setStore={setStore}
-                                    store={store}/>
+                                    store={store}
+                                    selectData={selectData}
+                                    setSelectData={setSelectData}/>
                     })}
                 </ul>
             </div>

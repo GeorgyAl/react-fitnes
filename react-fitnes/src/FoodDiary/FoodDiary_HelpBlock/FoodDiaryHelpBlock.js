@@ -2,7 +2,7 @@ import React from 'react';
 import './FoodDiaryHelpBlock.css'
 import NutritionHelpBlock from './NutritionHelpBlock.js'
 
-export default function FoodDiaryHelpBlock({ helpInactiveClick, setStore, store }) {
+export default function FoodDiaryHelpBlock({ helpInactiveClick, setStore, store, selectData, setSelectData }) {
 
     return  <div className="help_block">
                 <div className="help_block_head">
@@ -10,6 +10,10 @@ export default function FoodDiaryHelpBlock({ helpInactiveClick, setStore, store 
                         <button onClick={helpInactiveClick} type="button" className="help_block_vector"></button>
                     </form>
                 </div>
-                <NutritionHelpBlock setStore={setStore} store={store}/>
+                <NutritionHelpBlock 
+                    setStore={setStore}
+                    store={store}
+                    selectData={selectData}
+                    setSelectData={setSelectData}/>
             </div>
 }

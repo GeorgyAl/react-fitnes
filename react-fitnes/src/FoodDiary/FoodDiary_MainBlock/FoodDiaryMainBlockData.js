@@ -1,26 +1,38 @@
 import React, { useState } from 'react';
 import './FoodDiaryMainBlockData.css'
 import initialState from '../../Store/store';
-
-export default function FoodDiaryMainBlockData() {
+import FoodDiaryMainBlockData1 from './FoodDiaryMainBlockData1';
+import FoodDiaryMainBlockData2 from './FoodDiaryMainBlockData2';
+export default function FoodDiaryMainBlockData({ selectData, setSelectData }) {
     const [store, setStore] = useState(initialState);
-    const [triangle, setTriangle] = useState(false);
+    const [triangleL, setTriangleL] = useState(false);
+    const [triangleR, setTriangleR] = useState(true);
     function triangleRight () {
-        setTriangle(false);
+        setTriangleL(false);
+        setTriangleR(true)
     }
     function triangleLeft () {
-        setTriangle(true);
+        setTriangleL(true);
+        setTriangleR(false);
     }
+
     return  <div>
-                <div className="data_target">Выберите дату</div>
+                <div className="data_target">{selectData ? '' : 'Выберите дату'}</div>
                 <div className="triangle-left" onClick={triangleLeft}></div>
                 <ul className="data_block">
-                {triangle ? store.days2.map((pos, index) => {
-                        return <li className="data" key={index}>{pos.day}</li>
-                    }) : store.days1.map((pos, index) => {
-                        return <li className="data" key={index}>{pos.day}</li>
-                    })}
-                    
+                {triangleR && <FoodDiaryMainBlockData1 
+                                className="data" 
+                                setStore={setStore} 
+                                store={store}
+                                selectData={selectData}
+                                setSelectData={setSelectData}/>}
+                {triangleL && <FoodDiaryMainBlockData2
+                                className="data"
+                                setStore={setStore}
+                                store={store}
+                                selectData={selectData}
+                                setSelectData={setSelectData}/>
+                }
                 </ul>
                 <div className="triangle-right" onClick={triangleRight}></div>
             </div>

@@ -1,44 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import './WorkoutHelpContentExer.css'
 import WorkoutHelpContentExerItem from './WorkoutHelpContentExerItem';
+import { db } from  '../../../firebaseConfig'
+import { collection, getDocs } from 'firebase/firestore'
 
-const exercisesMock = [
-    {
-        name: 'Жим лежа',
-        gif: 'work3'
-    },
-    {
-        name: 'Тяга грифа в наклоне',
-        gif: 'work1'
-    },
-    {
-        name: 'Жим гантелей лежа',
-        gif: 'work6'
-    },
-    {
-        name: 'Отжимания на брусьях',
-        gif: 'work5'
-    },
-    {
-        name: 'Вертикальная тяга',
-        gif: 'work4'
-    },
-    {
-        name: 'Бицепс c грифом',
-        gif: 'work7'
-    },
-    {
-        name: 'Скручивания',
-        gif: 'work2'
-    }
-]
-
-export default function WorkoutHelpContentExer({ setStore, store }) {
+export default function WorkoutHelpContentExer({ setStore, store, selectData, setSelectData }) {
 
     const [value, setValue] = useState('')
     const [exercises, setExercise] = useState([]);
+    const exercisesCollectionRef = collection(db, "exercise")
 
-    const filteredExercises  = exercisesMock.filter(exercise => {
+    useEffect(() => {
+        const getExercise = async () => {
+            const data = await getDocs(exercisesCollectionRef);
+            setExercise(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+        }
+        getExercise();
+    }, [])
+
+    const filteredExercises  = exercises.filter(exercise => {
         return exercise.name.toLowerCase().includes(value.toLowerCase())
     })
 
@@ -57,10 +37,12 @@ export default function WorkoutHelpContentExer({ setStore, store }) {
                 <ul className="exercises_block">
                 {filteredExercises.map((exercise, index) => {
                             return <WorkoutHelpContentExerItem key={index} 
-                                                               name={exercise.name}
-                                                               gif={exercise.gif}
-                                                               setStore={setStore}
-                                                               store={store}/>
+                                        name={exercise.name}
+                                        gif={exercise.gif}
+                                        setStore={setStore}
+                                        store={store}
+                                        selectData={selectData}
+                                        setSelectData={setSelectData}/>
                         })}
                 </ul>
             </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './WorkoutData.css'
+import './FoodDiaryMainBlockData.css'
 
-export default function WorkoutDataItem2({ setStore, store, selectData, setSelectData }) {
+export default function FoodDiaryMainBlockData1({ setStore, store, selectData, setSelectData }) {
     const [daY1, setDaY1] = useState(false);
     const [daY2, setDaY2] = useState(false);
     const [daY3, setDaY3] = useState(false);

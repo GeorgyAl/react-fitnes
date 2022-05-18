@@ -7,6 +7,8 @@ export default function FoodDiaryPage() {
 
   const[store, setStore] = useState(initialState);
   const [helpActive, setHelpActive] = useState(false);
+  const [selectData, setSelectData] = useState('');
+
 
   function helpActiveClickBreakfast () {
     setHelpActive(true);
@@ -40,8 +42,15 @@ export default function FoodDiaryPage() {
                 helpActiveClickDinner={helpActiveClickDinner} 
                 helpActiveClickBreakfast={helpActiveClickBreakfast}
                 store={store}
-                setStore={setStore}/>
-              {helpActive && <FoodDiaryHelpBlock helpInactiveClick={helpInactiveClick} setStore={setStore} store={store}/>}
+                setStore={setStore}
+                selectData={selectData}
+                setSelectData={setSelectData}/>
+              {helpActive && <FoodDiaryHelpBlock 
+                                helpInactiveClick={helpInactiveClick} 
+                                setStore={setStore} 
+                                store={store}
+                                selectData={selectData}
+                                setSelectData={setSelectData}/>}
           </main>
 
 }

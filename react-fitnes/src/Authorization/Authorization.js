@@ -15,10 +15,10 @@ export default function Authorization() {
         try {
             const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
             console.log(user);
+            navigate('/home');
         } catch (error) {
             console.log(error.message);
         }
-        navigate('/home');
     }
   return   <>
                 <main></main>

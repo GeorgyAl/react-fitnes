@@ -3,7 +3,7 @@ import './NutritionHelpBlock.css'
 import NutritionHelpBlockAll from './NutritionHelpBlockAll';
 import NutritionHelpBlockPersonal from './NutritionHelpBlockPersonal';
 
-export default function NutritionHelpBlock({ setStore, store }) {
+export default function NutritionHelpBlock({ setStore, store, selectData, setSelectData }) {
     const [foods, setFoods] = useState([
         {
             name: 'Творог',
@@ -34,7 +34,17 @@ export default function NutritionHelpBlock({ setStore, store }) {
                     <button onClick={allActiveClick} type='button' className="nutrition_help_head">Все продукты</button>
                     <button onClick={personlActiveClick} type='button' className="nutrition_help_head">Личное</button>  
                 </form>
-                {allActive && <NutritionHelpBlockAll setStore={setStore} store={store}/>}
-                {personActive && <NutritionHelpBlockPersonal setStore={setStore} store={store} onUpdateFoods={onUpdateFoods} foods={foods} />}
+                {allActive && <NutritionHelpBlockAll 
+                                setStore={setStore} 
+                                store={store}
+                                selectData={selectData}
+                                setSelectData={setSelectData}/>}
+                {personActive && <NutritionHelpBlockPersonal 
+                                    setStore={setStore}
+                                    store={store}
+                                    onUpdateFoods={onUpdateFoods}
+                                    foods={foods}
+                                    selectData={selectData}
+                                    setSelectData={setSelectData}/>}
             </div>
 }

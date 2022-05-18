@@ -4,7 +4,7 @@ import NutritionHelpBlockPersonalAdd from './NutritionHelpBlockPersonalAdd';
 import NutritionHelpBlockAllItem from './NutritionHelpBlockAllItem';
 
 
-export default function NutritionHelpBlockPersonal({foods, onUpdateFoods, setStore, store}) {
+export default function NutritionHelpBlockPersonal({foods, onUpdateFoods, setStore, store, selectData, setSelectData }) {
     const [show, setShow] = useState(false)
 
     function handleClick () {
@@ -38,7 +38,9 @@ export default function NutritionHelpBlockPersonal({foods, onUpdateFoods, setSto
                                                         carbohydrates={food.carbohydrates}
                                                         callory={food.callory}
                                                         setStore={setStore}
-                                                        store={store}/>
+                                                        store={store}
+                                                        selectData={selectData}
+                                                        setSelectData={setSelectData}/>
                     })}
                 </ul>
             </div>

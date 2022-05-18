@@ -40,6 +40,9 @@
     background-color: black;
 }
 
+.calculator_button_inactive {
+    display: none;
+}
 
 .calculator_input {
     text-align: center;

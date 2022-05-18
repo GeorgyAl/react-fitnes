@@ -1,7 +1,7 @@
 import React from 'react';
 import './WorkoutHelpContentExerItem.css'
 
-export default function WorkoutHelpContentExerItem({name, gif, setStore, store }) {
+export default function WorkoutHelpContentExerItem({name, gif, setStore, store, selectData }) {
 
     function workoutInDayImport () {
         setStore((prevStore) => {
@@ -16,32 +16,57 @@ export default function WorkoutHelpContentExerItem({name, gif, setStore, store }
                 ]
             }
         } )
-        /* Сохранение данных на сервере - добавление упражнения*/
     }
 
     function workoutInDayDataImport () {
-        console.log(store);
-        for( let i = 0; i < 7; i++) {
-            if(store.days1[i].position === true) {
-                setStore((prevStore) => {
-                    return {
-                        ...prevStore,
-                        days1: [
-                            ...prevStore.days1,
-                            store.days1[i].WorkInDay, [
-                                ...prevStore.WorkInDay,
-                                {
-                                    name: name,
-                                    gif: gif,
-                                },
-                            ]
+        if(selectData) {
+            setStore((prevStore) => {
+                return {
+                    ...prevStore,
+                    WorkAllDays: {
+                        ...prevStore.WorkAllDays,
+                        [selectData]: [
+                            ...prevStore.WorkAllDays[selectData],
+                            {
+                                name: name,
+                                gif: gif,
+                            }
                         ]
                     }
-                } )
-            }
+                }
+            } )
         }
-        
     }
 
-    return <li onClick={workoutInDayImport} className="exercises_element">{name}</li>
+    function workoutInDayDataImport2 () { 
+        const WorkAllDays = store.WorkAllDays[selectData] ? { 
+            ...store.WorkAllDays, 
+            [selectData]: [ 
+                ...store.WorkAllDays[selectData], 
+                { 
+                    name: name, 
+                    gif: gif, 
+                } 
+            ] 
+            } : { 
+                ...store.WorkAllDays, 
+                [selectData]: [ 
+                    { 
+                        name: name, 
+                        gif: gif, 
+                    } 
+                ] 
+            }; 
+ 
+        if(selectData) { 
+            setStore((prevStore) => { 
+                return { 
+                    ...prevStore, 
+                    WorkAllDays: WorkAllDays 
+                } 
+            }) 
+        } 
+ 
+    }
+    return <li onClick={workoutInDayDataImport2} className="exercises_element">{name}</li>
 }

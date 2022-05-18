@@ -1,6 +1,5 @@
-import { async } from '@firebase/util';
 import React, { useState } from 'react';
-import { createUserWithEmailAndPassword, updateCurrentUser } from 'firebase/auth'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import './Registration.css'
 import { auth } from '../firebaseConfig'
 import { Link, useNavigate } from 'react-router-dom'
@@ -12,14 +11,14 @@ export default function Registration() {
     const register = async (e) => {
         e.preventDefault();
         try {
-            const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword, registerName)
+            const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
+            await updateProfile( user.user, {displayName: registerName})
             console.log(user);
+            navigate('/home');
         } catch (error) {
             console.log(error.message);
         }
-        navigate('/home');
     }
-
   return   <>
                 <main></main>
                 <div className="registration">
