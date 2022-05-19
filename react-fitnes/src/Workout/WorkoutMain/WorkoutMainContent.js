@@ -1,8 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { onAuthStateChanged } from 'firebase/auth'
 import './WorkoutMainContent.css'
 import WorkoutMainContentItem from './WorkoutMainContentItem';
+import { db, auth } from '../../firebaseConfig';
+import { collection, addDoc, getDocs, updateDoc, doc, deleteDoc, deleteField} from 'firebase/firestore';
 
 export default function WorkoutMainContent({ helpActiveClick, store, setStore, selectData, setSelectData}) {
+    const [user, setUser] = useState({})
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+    }, [user, setUser])
+
+    const workoutCollectionRef = collection(db, 'WorkAllDays');
+
+    const createWork = async () => {
+        await addDoc (workoutCollectionRef, {[selectData]: store.WorkAllDays[selectData], author: {id: auth.currentUser.uid}})
+    }
+    const getWork = async () => {
+            const data = await getDocs (workoutCollectionRef);
+            const works = (data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+            const worker = works.filter((work) => work.author.id === user.uid);
+            if( worker.length === 0) {
+                createWork();
+            } else {
+                for (let i = 0; i < worker.length; i++) {
+                    if(worker[i].id && worker[i][selectData]) {
+                        let id = worker[i].id;
+                        await deleteDoc (doc(db, 'WorkAllDays', `${id}`))
+                        createWork();
+                    } else {
+                        createWork();
+                    }
+                }
+            }
+    };
+
+    function createWorks(e) {
+        e.preventDefault();
+        getWork();
+    }
 
     return <div className="workout">
                 <ul className="workout_item_head">
@@ -22,6 +61,6 @@ export default function WorkoutMainContent({ helpActiveClick, store, setStore, s
                                     selectData={selectData}/>
                     }) : null}
                 </div>
-                <button className={selectData && store.WorkAllDays[selectData] ? "calculator_button" : "calculator_button_inactive" }>Сохранить</button>
+                <button onClick={createWorks} className={selectData && store.WorkAllDays[selectData]?.length ? "calculator_button" : "calculator_button_inactive" }>Сохранить</button>
             </div>
 }

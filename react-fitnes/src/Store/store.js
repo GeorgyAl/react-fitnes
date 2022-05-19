@@ -79,6 +79,7 @@ let state = {
         dinner: false,
     },
     allPosts: [],
+    foodPersonal: [],
     weightControl: [],
     WorkAllDays: {
     },

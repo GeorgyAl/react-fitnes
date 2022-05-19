@@ -15,24 +15,14 @@ export default function Home() {
     const [postDescription, setPostDescription] = useState('');
     const [user, setUser] = useState({})
 
-
-    const postsCollectionRef = collection(db, 'posts');
-    const [postSee, setPostSee] = useState([])
-    useEffect(() => {
-        const getPosts = async () => {
-            const data = await getDocs (postsCollectionRef);
-            setPostSee(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
-            console.log(postSee);
-        };
-        getPosts();
-    }, [])
-
-
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
         });
+        console.log(user)
     }, [user, setUser])
+
+    const postsCollectionRef = collection(db, 'posts');
 
     function handleAddPostActive () {
         setShowAddPost(true);
@@ -54,6 +44,23 @@ export default function Home() {
             window.removeEventListener('keyup', handleEscape);
         }
     })
+
+    useEffect(() => {
+        const getPosts = async () => {
+            const data = await getDocs (postsCollectionRef);
+            const posts = (data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+            console.log(posts[0].author.id)
+            const postsUser = user?.uid  ? (posts.filter((post) => post.author.id === user.uid)) : [];
+            console.log(postsUser)
+            setStore((prevStore) => {
+                return {
+                    ...prevStore,
+                    allPosts: postsUser,
+                }
+            })
+        };
+        getPosts();
+    }, [user, setUser])
     
     function postImport () {
             setStore((prevStore) => {
@@ -64,13 +71,12 @@ export default function Home() {
                         {
                             id: store.allPosts.length + 1,
                             title: postTitle,
-                            description: postDescription,  
+                            postText: postDescription,  
                         }
                     ],
                 }
             } )
     }
-
 
   return  <div className="home_page_main">
             <div className="home_page">
@@ -78,7 +84,7 @@ export default function Home() {
                 {user ? <div className="home_page_name">{user.displayName}</div> : <div className="home_page_name"></div>}
                 <button onClick={handleAddPostActive} className="home_page_post">Новая запись</button>
             </div>
-            {user ? postSee.map((post, index) => {
+            {user ? store.allPosts.map((post, index) => {
                         return <BlockNewPost postTitle={post.title} key={index} postDescription={post.postText}/>
                 }) : null}
             {showAddpost && <AddNewPost 

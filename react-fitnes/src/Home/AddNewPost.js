@@ -9,7 +9,7 @@ export default function AddNewPost( { handleAddPostInactive, store, postTitle, p
     const createPosts = async () => {
         await addDoc (postsCollectionRef, {title: postTitle, postText: postDescription, author: {id: auth.currentUser.uid}}, )
     }
-
+    
     function createPost(e) {
         e.preventDefault();
         createPosts()

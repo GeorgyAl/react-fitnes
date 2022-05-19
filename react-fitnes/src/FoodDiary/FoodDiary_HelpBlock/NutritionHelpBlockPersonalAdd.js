@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './NutritionHelpBlockPersonalAdd.css'
-
-export default function NutritionHelpBlockPersonalAdd({onClick}) {
-    console.log(onClick, 'OnClick')
+import { db, auth } from '../../firebaseConfig';
+import { addDoc, collection } from 'firebase/firestore';
+export default function NutritionHelpBlockPersonalAdd({ onUpdateFoods, setStore, store }) {
+    console.log(onUpdateFoods, 'OnClick')
 
     const [name, setName] = useState('')
     const [squirrels, setSquirrels] = useState('')
@@ -10,16 +11,42 @@ export default function NutritionHelpBlockPersonalAdd({onClick}) {
     const [carbohydrates, setCarbohydrates] = useState('')
     const [callory, setCallory] = useState('')
 
-    function handleClick () {
-        onClick({
+    const foodsPersonalCollectionRef = collection(db, 'foodsPersonal');
+    const createFoodPersonal = async () => {
+        await addDoc (foodsPersonalCollectionRef, {
             name,
             squirrels,
             fats,
             carbohydrates,
             callory,
-        }) 
-        
+            author: {id: auth.currentUser.uid}
+        }, )
     }
+
+    function foodPersonalImport () {
+        setStore((prevStore) => {
+            return {
+                ...prevStore,
+                foodPersonal: [
+                    ...prevStore.foodPersonal,
+                    {
+                        name,
+                        squirrels,
+                        fats,
+                        carbohydrates,
+                        callory,
+                    }
+                ],
+            }
+        } )
+}
+    function handleClick () {
+        createFoodPersonal();
+        foodPersonalImport();
+    }
+
+
+
     return  <div className="nutrition_personal_add_example">
                 <form action="/" method="post">
                     <label className="nutrition_personal_add_example_name">Название<input className="nutrition_personal_add_example_input" 
