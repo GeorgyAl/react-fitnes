@@ -7,7 +7,6 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebaseConfig';
 import { db } from '../firebaseConfig';
 import { getDocs, collection} from 'firebase/firestore'
-
 export default function Home() {
     const [store, setStore] = useState(initialState)
     const [showAddpost, setShowAddPost] = useState(false);
@@ -61,6 +60,8 @@ export default function Home() {
         };
         getPosts();
     }, [user, setUser])
+
+
     
     function postImport () {
             setStore((prevStore) => {
@@ -77,10 +78,20 @@ export default function Home() {
                 }
             } )
     }
-
+    const userAvatar = (e) => {
+        if (e.target.files.length) {
+            setStore((prevStore) => {
+                return {
+                    ...prevStore,
+                    photoUser: e.target.files[0],
+                }
+            })
+        }
+    }
+    console.log(store)
   return  <div className="home_page_main">
             <div className="home_page">
-                <div className="home_page_avatar"></div>
+                <img className="home_page_avatar" alt='avatar' src={require('./Icon/startIcon.jpg')}/>
                 {user ? <div className="home_page_name">{user.displayName}</div> : <div className="home_page_name"></div>}
                 <button onClick={handleAddPostActive} className="home_page_post">Новая запись</button>
             </div>

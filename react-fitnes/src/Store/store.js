@@ -78,6 +78,7 @@ let state = {
         lunch: false,
         dinner: false,
     },
+    photoUser: '',
     allPosts: [],
     foodPersonal: [],
     weightControl: [],
