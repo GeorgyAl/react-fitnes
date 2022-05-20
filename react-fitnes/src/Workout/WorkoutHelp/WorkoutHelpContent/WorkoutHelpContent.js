@@ -18,7 +18,6 @@ export default function WorkoutHelpContent({setStore, store, selectData, setSele
 
     return  <div className="workout_help_block">
                     <div className="workout_help_head" onClick={showExercisesClick}>Упражнения</div>
-                    <div className="workout_help_head" onClick={showProgramsClick}>Программы</div>
                     {showExercises && <WorkoutHelpContentExer setStore={setStore} store={store} selectData={selectData} setSelectData={setSelectData}/>}
                     {showPrograms && <WorkoutHelpContentPrograms/>}
             </div>

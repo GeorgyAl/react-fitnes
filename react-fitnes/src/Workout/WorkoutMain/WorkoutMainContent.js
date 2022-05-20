@@ -84,9 +84,6 @@ export default function WorkoutMainContent({ helpActiveClick, store, setStore, s
     return <div className="workout">
                 <ul className="workout_item_head">
                     <li className="workout_item" onClick={helpActiveClick}>Добавить<br/>упражнение</li>
-                    <li className="workout_item">Создать<br/>тренировку</li>
-                    <li className="workout_item">Добавить<br/>тренировку</li>
-                    <li className="workout_item">Добавить<br/>программу</li>
                 </ul>
                 <div className="workout_main">
                     {selectData && store.WorkAllDays[selectData] ? store.WorkAllDays[selectData].map((exercise, index) => {
