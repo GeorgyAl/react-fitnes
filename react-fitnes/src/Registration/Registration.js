@@ -14,7 +14,7 @@ export default function Registration() {
             const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
             await updateProfile( user.user, {displayName: registerName})
             console.log(user);
-            navigate('/home');
+            navigate('/react-fitnes/home');
         } catch (error) {
             console.log(error.message);
         }

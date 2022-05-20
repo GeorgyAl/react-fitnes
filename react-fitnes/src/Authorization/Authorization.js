@@ -15,7 +15,7 @@ export default function Authorization() {
         try {
             const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
             console.log(user);
-            navigate('/home');
+            navigate('/react-fitnes/home');
         } catch (error) {
             console.log(error.message);
         }
