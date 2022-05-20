@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-fitnes/static/css/main.4ca125cf.css",
-    "main.js": "/react-fitnes/static/js/main.c80d0abe.js",
+    "main.js": "/react-fitnes/static/js/main.13ec53f4.js",
     "static/js/787.f47031fc.chunk.js": "/react-fitnes/static/js/787.f47031fc.chunk.js",
     "static/media/work3.gif": "/react-fitnes/static/media/work3.b911ac952f6f64c80d12.gif",
     "static/media/work1.gif": "/react-fitnes/static/media/work1.a4ccbae7a217f3319984.gif",
@@ -12,11 +12,11 @@
     "static/media/work2.gif": "/react-fitnes/static/media/work2.d0b8de5ccc6ec05311b1.gif",
     "index.html": "/react-fitnes/index.html",
     "main.4ca125cf.css.map": "/react-fitnes/static/css/main.4ca125cf.css.map",
-    "main.c80d0abe.js.map": "/react-fitnes/static/js/main.c80d0abe.js.map",
+    "main.13ec53f4.js.map": "/react-fitnes/static/js/main.13ec53f4.js.map",
     "787.f47031fc.chunk.js.map": "/react-fitnes/static/js/787.f47031fc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4ca125cf.css",
-    "static/js/main.c80d0abe.js"
+    "static/js/main.13ec53f4.js"
   ]
 }
