@@ -16,7 +16,7 @@ export default function WorkoutMainContent({ helpActiveClick, store, setStore, s
 
 
     const updateInfo = (array, id) => {
-        return array.map((item) => ({ ...item, id: id, author: { id: auth.currentUser.uid} })) // тут author не помню что должно быть
+        return array.map((item) => ({ ...item, id: id, author: { id: auth.currentUser.uid} }))
     }
     const workoutCollectionRef = collection(db, 'WorkingAllDays');
 
@@ -25,7 +25,8 @@ export default function WorkoutMainContent({ helpActiveClick, store, setStore, s
         const fetchData = async () => {
            const data =  await getDocs (workoutCollectionRef);
            const allWorkout = (data.docs.map((doc) => ({...doc.data(), id: doc.id})));
-           const newAllWorkout = allWorkout.reduce((prev, item) => {
+           const allWorkoutUser = user?.uid  ? (allWorkout.filter((post) => post.author.id === user.uid)) : [];
+           const newAllWorkout = allWorkoutUser.reduce((prev, item) => {
            console.log("🚀 ITEM.ID", item.id)
             const key = Object.keys(item).sort()[0];
                 const listUpdated = updateInfo(item[key], item.id);
@@ -51,31 +52,53 @@ export default function WorkoutMainContent({ helpActiveClick, store, setStore, s
            console.log(allWorkout, 'allWorkout')
         }
         fetchData();
-    }, [])
+    }, [user, setUser])
 
 
 
     const createWork = async () => {
-        await addDoc (workoutCollectionRef, {[selectData]: store.WorkAllDays[selectData], author: {id: auth.currentUser.uid} })    
+        await addDoc (workoutCollectionRef, {[selectData]: store.WorkAllDays[selectData], author: {id: auth.currentUser.uid} })
+        const fetchData = async () => {
+            const data =  await getDocs (workoutCollectionRef);
+            const allWorkout = (data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+            const newAllWorkout = allWorkout.reduce((prev, item) => {
+            console.log("🚀 ITEM.ID", item.id)
+             const key = Object.keys(item).sort()[0];
+                 const listUpdated = updateInfo(item[key], item.id);
+                if (prev[key]) {
+                    prev[key] = [
+                        ...updateInfo(prev[key]),
+                        ...listUpdated,
+                    ]
+                } else {
+                    prev[key] = [
+                     ...listUpdated,
+                    ]
+                }
+                return prev
+            }, {})
+            setStore((prevStore) => {
+                return {
+                    ...prevStore,
+                    WorkAllDays: newAllWorkout,
+                }
+            })
+            console.log(newAllWorkout, 'newAllWorkout')
+            console.log(allWorkout, 'allWorkout')
+         }
+         fetchData();  
     }
 
     const getWork = async () => {
             const worker = store.WorkAllDays[selectData];
-            if(worker.length === 0) {
-                createWork();
-            } else {
-                for (let i = 0; i < worker.length; i++) {
-                    const id = worker[i].id
-                    console.log(worker, 'worker')
-                    console.log(worker[i].id, 'worker[i].id')
-                    if(id) {
-                        await deleteDoc (doc(db, 'WorkingAllDays', `${id}`))
-                        createWork();
-                    } else {
-                        createWork();
-                    }
+            for (let i = 0; i < worker.length; i++) {
+                const id = worker[i].id;
+                if(id) {
+                    await deleteDoc (doc(db, 'WorkingAllDays', `${id}`))
                 }
             }
+            createWork()
+
     };
     function createWorks(e) {
         e.preventDefault();
