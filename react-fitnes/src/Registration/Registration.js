@@ -43,7 +43,7 @@ export default function Registration() {
                             onChange={(event) => {setRegisterEmail(event.target.value)}}
                             required/>
                         <button className="btn_regist" type='submit'>Создать аккаунт</button>
-                        <Link to='/' className='link_btn'><button className="btn_regist" type='button'>На главную</button></Link>
+                        <Link to='/react-fitnes/' className='link_btn'><button className="btn_regist" type='button'>На главную</button></Link>
                     </form>
                 </div>
             </>

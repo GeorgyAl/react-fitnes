@@ -15,12 +15,12 @@ function App() {
             <Header/>
           </div>
           <Routes>
-              <Route path='*' element={<FoodDiaryPage/>}/>
-              <Route path='/workout' element={<WorkoutPage/>}/>
-              <Route path='/weight' element={<WeightContolPage/>}/>
-              <Route path='/auth' element={<AuthorizationPage/>}/>
-              <Route path='/registration' element={<RegistrationPage/>}/>
-              <Route path='/home' element={<HomePage/>}/>
+              <Route path='/react-fitnes/' element={<FoodDiaryPage/>}/>
+              <Route path='/react-fitnes/workout' element={<WorkoutPage/>}/>
+              <Route path='/react-fitnes/weight' element={<WeightContolPage/>}/>
+              <Route path='/react-fitnes/auth' element={<AuthorizationPage/>}/>
+              <Route path='/react-fitnes/registration' element={<RegistrationPage/>}/>
+              <Route path='/react-fitnes/home' element={<HomePage/>}/>
           </Routes>
         </>
     

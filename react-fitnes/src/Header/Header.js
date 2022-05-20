@@ -19,7 +19,7 @@ export default function Header() {
     return <header className="header">
     <div className="name">SKiF</div>
     <form>
-        {user ? <button onClick={logout}  className="entry" type='button'>Выйти</button> : <Link to='/auth'><button  className="entry">Войти</button></Link>}
+        {user ? <button onClick={logout}  className="entry" type='button'>Выйти</button> : <Link to='/react-fitnes/auth'><button  className="entry">Войти</button></Link>}
     </form>
     </header>
 }

@@ -39,8 +39,8 @@ export default function Authorization() {
                                 required/>
                            <button className="btn" type='submit'>Войти</button>
                     </form>
-                    <Link to='/registration' className='link_btn'><button className="btn" type='button'>Регистрация</button></Link>
-                    <Link to='/' className='link_btn'><button className="btn" type='button'>На главную</button></Link>
+                    <Link to='/react-fitnes/registration' className='link_btn'><button className="btn" type='button'>Регистрация</button></Link>
+                    <Link to='/react-fitnes/' className='link_btn'><button className="btn" type='button'>На главную</button></Link>
                 </div>
             </>
   
